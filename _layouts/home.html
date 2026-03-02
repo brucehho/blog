@@ -6,23 +6,32 @@ layout: default
 
 <main class="home">
   <header class="hero">
-    <img class="hero-cover" src="{{ '/assets/images/cover.png' | relative_url }}" alt="Cover" />
+    <span class="hero-label">Strategic Observer</span>
     <h1>{{ site.title }}</h1>
     <p class="tagline">{{ site.description }}</p>
   </header>
 
   <section class="posts-section">
-    <h2 class="section-title">文章</h2>
+    <h2 class="section-title">最新文章</h2>
     <ul class="post-list">
       {% for post in site.posts %}
         {% assign post_lang = post.lang | default: 'zh' %}
         {% assign show_on_homepage = post.homepage | default: true %}
         {% if post_lang == 'zh' and show_on_homepage %}
         <li class="post-item">
-          <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
           <div class="post-meta">
             <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+            {% if post.categories and post.categories.size > 0 %}
+            <span class="meta-separator">·</span>
+            {% for cat in post.categories %}
+              <a class="post-category" href="{{ '/categories/' | append: cat | relative_url }}">{{ cat }}</a>
+            {% endfor %}
+            {% endif %}
           </div>
+          <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% if post.summary %}
+          <p class="post-summary">{{ post.summary }}</p>
+          {% endif %}
         </li>
         {% endif %}
       {% endfor %}
@@ -31,4 +40,3 @@ layout: default
 </main>
 
 {% include footer.html %}
-
