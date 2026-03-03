@@ -18,40 +18,16 @@ layout: default
   {% assign latest_updates = visible_posts | slice: 0, 8 %}
   {% assign feature_stories = visible_posts | slice: 5, 4 %}
 
-  {% assign rail_tags = "" | split: "" %}
-  {% for post in visible_posts limit: 10 %}
-    {% for t in post.tags limit: 3 %}
-      {% assign rail_tags = rail_tags | push: t %}
-    {% endfor %}
-  {% endfor %}
-  {% assign rail_tags = rail_tags | uniq %}
-
   <header class="hero">
     <h1>{{ site.title }}</h1>
     <p class="tagline">{{ site.description }}</p>
   </header>
 
-  <section class="tag-rail">
-    <h2 class="section-title">热门标签</h2>
-    <div class="tag-rail-list">
-      {% for t in rail_tags limit: 12 %}
-        {% assign tag_url = t | uri_escape %}
-        <a class="tag-pill" href="{{ '/tags/' | append: tag_url | append: '/' | relative_url }}">{{ t }}</a>
-      {% endfor %}
-      <a class="tag-pill tag-pill-all" href="{{ '/tags/' | relative_url }}">全部标签</a>
-    </div>
-  </section>
-
   <section class="top-stories">
     <h2 class="section-title">Top Stories</h2>
     {% if top_story %}
-      {% assign top_tag = top_story.tags[0] | default: "" %}
       <article class="top-story-main">
         <div class="post-meta">
-          {% if top_tag != "" %}
-            {% assign top_tag_url = top_tag | uri_escape %}
-            <a class="post-category" href="{{ '/tags/' | append: top_tag_url | append: '/' | relative_url }}">{{ top_tag }}</a>
-          {% endif %}
           <time>{{ top_story.date | date: '%Y-%m-%d' }}</time>
         </div>
         <a class="post-title" href="{{ top_story.url | relative_url }}">{{ top_story.title }}</a>
@@ -61,13 +37,8 @@ layout: default
 
     <div class="top-story-grid">
       {% for post in secondary_stories %}
-        {% assign post_tag = post.tags[0] | default: "" %}
         <article class="top-story-card">
           <div class="post-meta">
-            {% if post_tag != "" %}
-              {% assign post_tag_url = post_tag | uri_escape %}
-              <a class="post-category" href="{{ '/tags/' | append: post_tag_url | append: '/' | relative_url }}">{{ post_tag }}</a>
-            {% endif %}
             <time>{{ post.date | date: '%Y-%m-%d' }}</time>
           </div>
           <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -82,13 +53,8 @@ layout: default
       <h2 class="section-title">Latest Updates</h2>
       <ul class="latest-list">
         {% for post in latest_updates %}
-          {% assign update_tag = post.tags[0] | default: "" %}
           <li class="latest-item">
             <div class="post-meta">
-              {% if update_tag != "" %}
-                {% assign update_tag_url = update_tag | uri_escape %}
-                <a class="post-category" href="{{ '/tags/' | append: update_tag_url | append: '/' | relative_url }}">{{ update_tag }}</a>
-              {% endif %}
               <time>{{ post.date | date: '%Y-%m-%d' }}</time>
             </div>
             <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -101,13 +67,8 @@ layout: default
       <h2 class="section-title">Features</h2>
       <div class="features-list">
         {% for post in feature_stories %}
-          {% assign feature_tag = post.tags[0] | default: "" %}
           <article class="feature-item">
             <div class="post-meta">
-              {% if feature_tag != "" %}
-                {% assign feature_tag_url = feature_tag | uri_escape %}
-                <a class="post-category" href="{{ '/tags/' | append: feature_tag_url | append: '/' | relative_url }}">{{ feature_tag }}</a>
-              {% endif %}
               <time>{{ post.date | date: '%Y-%m-%d' }}</time>
             </div>
             <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>

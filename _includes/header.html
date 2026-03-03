@@ -1,14 +1,3 @@
-{% assign nav_zh_posts = site.posts | where: "lang", "zh" %}
-{% assign nav_tags = "" | split: "" %}
-{% for post in nav_zh_posts limit: 12 %}
-  {% unless post.homepage == false %}
-    {% for t in post.tags limit: 3 %}
-      {% assign nav_tags = nav_tags | push: t %}
-    {% endfor %}
-  {% endunless %}
-{% endfor %}
-{% assign nav_tags = nav_tags | uniq %}
-
 <nav class="nav">
   <div class="nav-main">
     <div class="nav-links">
@@ -18,9 +7,10 @@
     </div>
   </div>
   <div class="nav-tag-scroll">
-    {% for t in nav_tags limit: 10 %}
-      {% assign t_url = t | uri_escape %}
-      <a class="nav-tag-link" href="{{ '/tags/' | append: t_url | append: '/' | relative_url }}">{{ t }}</a>
-    {% endfor %}
+    <a class="nav-tag-link" href="{{ '/tags/中东/' | relative_url }}">中东</a>
+    <a class="nav-tag-link" href="{{ '/tags/金融/' | relative_url }}">金融</a>
+    <a class="nav-tag-link" href="{{ '/tags/经济/' | relative_url }}">经济</a>
+    <a class="nav-tag-link" href="{{ '/tags/中美/' | relative_url }}">中美</a>
+    <a class="nav-tag-link" href="{{ '/tags/日本/' | relative_url }}">日本</a>
   </div>
 </nav>
