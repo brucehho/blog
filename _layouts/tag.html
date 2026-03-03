@@ -4,6 +4,21 @@ layout: default
 
 {% include header.html %}
 
+{% comment %}
+  Map Chinese tag names to their English equivalents used in EN post front matter.
+  EN posts use English tags; ZH tag pages use Chinese names.
+{% endcomment %}
+{% assign en_tag = '' %}
+{% if page.tag == '中东' %}{% assign en_tag = 'Middle East' %}
+{% elsif page.tag == '中美' %}{% assign en_tag = 'China-US' %}
+{% elsif page.tag == '日本' %}{% assign en_tag = 'Japan' %}
+{% elsif page.tag == '经济' %}{% assign en_tag = 'Economy' %}
+{% elsif page.tag == '金融' %}{% assign en_tag = 'Finance' %}
+{% elsif page.tag == '地缘政治' %}{% assign en_tag = 'Geopolitics' %}
+{% elsif page.tag == '国际关系' %}{% assign en_tag = 'International Relations' %}
+{% elsif page.tag == '战略' %}{% assign en_tag = 'Strategy' %}
+{% endif %}
+
 <main class="category">
   <div class="tag-lang-bar">
     <h1>{{ page.title }}</h1>
@@ -27,15 +42,15 @@ layout: default
   </ul>
 
   <ul class="category-post-list" id="tag-posts-en">
-    {% assign has_en = false %}
     {% for post in site.posts %}
       {% assign post_lang = post.lang | default: 'zh' %}
-      {% if post_lang == 'en' and post.tags contains page.tag %}
-        {% assign has_en = true %}
-        <li class="category-post-item">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <time>{{ post.date | date: '%Y-%m-%d' }}</time>
-        </li>
+      {% if post_lang == 'en' %}
+        {% if post.tags contains page.tag or post.tags contains en_tag %}
+          <li class="category-post-item">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+          </li>
+        {% endif %}
       {% endif %}
     {% endfor %}
   </ul>
@@ -53,7 +68,6 @@ function switchTagLang(lang) {
   history.replaceState(null, '', '#' + lang);
 }
 
-// Auto-switch based on URL hash
 (function() {
   var hash = window.location.hash.replace('#', '');
   switchTagLang(hash === 'en' ? 'en' : 'zh');
