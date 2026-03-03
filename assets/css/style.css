@@ -72,19 +72,23 @@ body::before {
 .site-logo-bar {
   background: #fff;
   border-bottom: 1px solid var(--border);
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem 2rem;
   min-height: 72px;
 }
 
 /* ----------- CN/EN homepage language toggle ----------- */
 .lang-toggle {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   gap: 0.35rem;
   align-items: center;
-  flex-shrink: 0;
 }
 .lang-sep {
   color: var(--text-3);
@@ -711,6 +715,7 @@ body::before {
 /* ----------- Responsive ----------- */
 @media (max-width: 768px) {
   .site-logo-bar { padding: 0.75rem 1rem; min-height: 56px; }
+  .lang-toggle { right: 1rem; }
   .site-logo { gap: 0.55rem; }
   .logo-mark { width: 5px; height: 38px; }
   .logo-text { font-size: 1.2rem; }

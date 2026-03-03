@@ -1,7 +1,7 @@
 <header class="site-header">
   <!-- Layer 1: Logo bar -->
   <div class="site-logo-bar">
-    <a class="site-logo" href="{{ '/' | relative_url }}">
+    <a class="site-logo" href="{% if page.layout == 'home-en' %}{{ '/en/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">
       <span class="logo-mark"></span>
       <span class="logo-body">
         <span class="logo-text">地缘政治与思想观察</span>
