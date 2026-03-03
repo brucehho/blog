@@ -5,46 +5,108 @@ layout: default
 {% include header.html %}
 
 <main class="home">
+  {% assign zh_posts = site.posts | where: "lang", "zh" %}
+  {% assign visible_posts = "" | split: "" %}
+  {% for post in zh_posts %}
+    {% unless post.homepage == false %}
+      {% assign visible_posts = visible_posts | push: post %}
+    {% endunless %}
+  {% endfor %}
+
+  {% assign top_story = visible_posts[0] %}
+  {% assign secondary_stories = visible_posts | slice: 1, 4 %}
+  {% assign latest_updates = visible_posts | slice: 0, 8 %}
+  {% assign feature_stories = visible_posts | slice: 5, 4 %}
+
+  {% assign rail_tags = "" | split: "" %}
+  {% for post in visible_posts limit: 10 %}
+    {% for t in post.tags limit: 3 %}
+      {% assign rail_tags = rail_tags | push: t %}
+    {% endfor %}
+  {% endfor %}
+  {% assign rail_tags = rail_tags | uniq %}
+
   <header class="hero">
     <h1>{{ site.title }}</h1>
     <p class="tagline">{{ site.description }}</p>
   </header>
 
-  <section class="posts-section">
-    <h2 class="section-title">最新文章</h2>
+  <section class="tag-rail">
+    <h2 class="section-title">热门标签</h2>
+    <div class="tag-rail-list">
+      {% for t in rail_tags limit: 12 %}
+        {% assign tag_url = t | uri_escape %}
+        <a class="tag-pill" href="{{ '/tags/' | append: tag_url | append: '/' | relative_url }}">{{ t }}</a>
+      {% endfor %}
+      <a class="tag-pill tag-pill-all" href="{{ '/tags/' | relative_url }}">全部标签</a>
+    </div>
+  </section>
 
-    {% assign zh_posts = site.posts | where: "lang", "zh" %}
-    {% assign visible_posts = "" | split: "" %}
-    {% for post in zh_posts %}
-      {% unless post.homepage == false %}
-        {% assign visible_posts = visible_posts | push: post %}
-      {% endunless %}
-    {% endfor %}
-
-    {% assign featured = visible_posts[0] %}
-    {% if featured %}
-      {% assign featured_cat = featured.categories[0] | default: "" %}
-      <article class="post-featured">
+  <section class="top-stories">
+    <h2 class="section-title">Top Stories</h2>
+    {% if top_story %}
+      {% assign top_tag = top_story.tags[0] | default: "" %}
+      <article class="top-story-main">
         <div class="post-meta">
-          {% if featured_cat != "" %}
-            <a class="post-category cat-{{ featured_cat }}" href="{{ '/categories/' | append: featured_cat | relative_url }}">{{ featured_cat }}</a>
+          {% if top_tag != "" %}
+            {% assign top_tag_url = top_tag | uri_escape %}
+            <a class="post-category" href="{{ '/tags/' | append: top_tag_url | append: '/' | relative_url }}">{{ top_tag }}</a>
           {% endif %}
-          <time>{{ featured.date | date: '%Y-%m-%d' }}</time>
+          <time>{{ top_story.date | date: '%Y-%m-%d' }}</time>
         </div>
-        <a class="post-title" href="{{ featured.url | relative_url }}">{{ featured.title }}</a>
-        {% if featured.summary %}<p class="post-summary">{{ featured.summary }}</p>{% endif %}
+        <a class="post-title" href="{{ top_story.url | relative_url }}">{{ top_story.title }}</a>
+        {% if top_story.summary %}<p class="post-summary">{{ top_story.summary }}</p>{% endif %}
       </article>
     {% endif %}
 
-    {% assign grid_posts = visible_posts | slice: 1, 100 %}
-    {% if grid_posts.size > 0 %}
-      <div class="post-grid">
-        {% for post in grid_posts %}
-          {% assign cat = post.categories[0] | default: "" %}
-          <article class="post-card">
+    <div class="top-story-grid">
+      {% for post in secondary_stories %}
+        {% assign post_tag = post.tags[0] | default: "" %}
+        <article class="top-story-card">
+          <div class="post-meta">
+            {% if post_tag != "" %}
+              {% assign post_tag_url = post_tag | uri_escape %}
+              <a class="post-category" href="{{ '/tags/' | append: post_tag_url | append: '/' | relative_url }}">{{ post_tag }}</a>
+            {% endif %}
+            <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+          </div>
+          <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% if post.summary %}<p class="post-summary">{{ post.summary }}</p>{% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="world-columns">
+    <div class="latest-updates">
+      <h2 class="section-title">Latest Updates</h2>
+      <ul class="latest-list">
+        {% for post in latest_updates %}
+          {% assign update_tag = post.tags[0] | default: "" %}
+          <li class="latest-item">
             <div class="post-meta">
-              {% if cat != "" %}
-                <a class="post-category cat-{{ cat }}" href="{{ '/categories/' | append: cat | relative_url }}">{{ cat }}</a>
+              {% if update_tag != "" %}
+                {% assign update_tag_url = update_tag | uri_escape %}
+                <a class="post-category" href="{{ '/tags/' | append: update_tag_url | append: '/' | relative_url }}">{{ update_tag }}</a>
+              {% endif %}
+              <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+            </div>
+            <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="features">
+      <h2 class="section-title">Features</h2>
+      <div class="features-list">
+        {% for post in feature_stories %}
+          {% assign feature_tag = post.tags[0] | default: "" %}
+          <article class="feature-item">
+            <div class="post-meta">
+              {% if feature_tag != "" %}
+                {% assign feature_tag_url = feature_tag | uri_escape %}
+                <a class="post-category" href="{{ '/tags/' | append: feature_tag_url | append: '/' | relative_url }}">{{ feature_tag }}</a>
               {% endif %}
               <time>{{ post.date | date: '%Y-%m-%d' }}</time>
             </div>
@@ -53,8 +115,7 @@ layout: default
           </article>
         {% endfor %}
       </div>
-    {% endif %}
-
+    </div>
   </section>
 </main>
 

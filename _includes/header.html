@@ -1,7 +1,26 @@
+{% assign nav_zh_posts = site.posts | where: "lang", "zh" %}
+{% assign nav_tags = "" | split: "" %}
+{% for post in nav_zh_posts limit: 12 %}
+  {% unless post.homepage == false %}
+    {% for t in post.tags limit: 3 %}
+      {% assign nav_tags = nav_tags | push: t %}
+    {% endfor %}
+  {% endunless %}
+{% endfor %}
+{% assign nav_tags = nav_tags | uniq %}
+
 <nav class="nav">
-  <div class="nav-links">
-    <a href="{{ '/' | relative_url }}">首页</a>
-    <a href="{{ '/categories/' | relative_url }}">分类</a>
-    <a href="{{ '/about/' | relative_url }}">关于</a>
+  <div class="nav-main">
+    <div class="nav-links">
+      <a href="{{ '/' | relative_url }}">首页</a>
+      <a href="{{ '/tags/' | relative_url }}">标签</a>
+      <a href="{{ '/about/' | relative_url }}">关于</a>
+    </div>
+  </div>
+  <div class="nav-tag-scroll">
+    {% for t in nav_tags limit: 10 %}
+      {% assign t_url = t | uri_escape %}
+      <a class="nav-tag-link" href="{{ '/tags/' | append: t_url | append: '/' | relative_url }}">{{ t }}</a>
+    {% endfor %}
   </div>
 </nav>

@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+{% include header.html %}
+
+<main class="category">
+  <h1>{{ page.title }}</h1>
+  <ul class="category-post-list">
+    {% for post in site.posts %}
+      {% assign post_lang = post.lang | default: 'zh' %}
+      {% if post_lang == 'zh' and post.tags contains page.tag %}
+        <li class="category-post-item">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</main>
+
+{% include footer.html %}
