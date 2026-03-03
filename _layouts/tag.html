@@ -2,6 +2,12 @@
 layout: default
 ---
 
+<script>
+(function(){
+  var p=new URLSearchParams(location.search);
+  if(p.get('lang')==='en'||localStorage.getItem('siteLang')==='en')document.documentElement.classList.add('lang-en');
+})();
+</script>
 {% include header.html %}
 
 {% assign en_tag = '' %}
@@ -85,15 +91,17 @@ layout: default
 
 <script>
 function switchTagLang(lang) {
-  document.getElementById('tag-posts-zh').style.display = (lang === 'zh') ? 'block' : 'none';
-  document.getElementById('tag-posts-en').style.display = (lang === 'en') ? 'block' : 'none';
+  var zh = document.getElementById('tag-posts-zh'), en = document.getElementById('tag-posts-en');
+  if (zh) zh.style.display = (lang === 'zh') ? 'block' : 'none';
+  if (en) en.style.display = (lang === 'en') ? 'block' : 'none';
   document.querySelectorAll('.tag-lang-bar .tag-lang-btn').forEach(function(btn) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
   localStorage.setItem('siteLang', lang);
+  document.documentElement.classList.toggle('lang-en', lang === 'en');
   if (lang === 'en') applyEnUi(); else applyZhUi();
 }
-(function() {
+function runTagLang() {
   var params = new URLSearchParams(location.search);
   var lang = params.get('lang') || localStorage.getItem('siteLang') || 'zh';
   if (params.get('lang')) {
@@ -102,19 +110,17 @@ function switchTagLang(lang) {
   }
   switchTagLang(lang);
   if (lang === 'en') applyEnUi();
-})();
-var zhLabels = ['首页','中东','金融','经济','中美','日本','关于'];
-var enLabels = ['Home','Middle East','Finance','Economy','China-US','Japan','About'];
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', runTagLang);
+} else {
+  runTagLang();
+}
 function applyEnUi() {
   var bar = document.querySelector('.tag-lang-bar');
   if (bar && bar.dataset.enTitle) {
     var h = document.getElementById('tag-page-title');
     if (h) h.textContent = bar.dataset.enTitle;
-  }
-  var nav = document.querySelector('.nav-main');
-  if (nav) {
-    var links = nav.querySelectorAll('a');
-    for (var i = 0; i < links.length && i < enLabels.length; i++) links[i].textContent = enLabels[i];
   }
   var toggles = document.querySelectorAll('.lang-toggle .lang-btn');
   if (toggles[0]) toggles[0].classList.remove('active');
@@ -127,11 +133,6 @@ function applyZhUi() {
   if (bar && bar.dataset.zhTitle) {
     var h = document.getElementById('tag-page-title');
     if (h) h.textContent = bar.dataset.zhTitle;
-  }
-  var nav = document.querySelector('.nav-main');
-  if (nav) {
-    var links = nav.querySelectorAll('a');
-    for (var i = 0; i < links.length && i < zhLabels.length; i++) links[i].textContent = zhLabels[i];
   }
   var toggles = document.querySelectorAll('.lang-toggle .lang-btn');
   if (toggles[0]) toggles[0].classList.add('active');

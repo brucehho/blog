@@ -192,6 +192,12 @@ body::before {
   text-decoration: none;
 }
 
+/* Tag page: show EN nav when lang-en */
+.nav-main .nav-lang { display: flex; align-items: center; }
+.nav-main .nav-en { display: none; }
+html.lang-en .nav-main .nav-zh { display: none; }
+html.lang-en .nav-main .nav-en { display: flex; }
+
 /* ----------- Live Updates badge (used on latest article) ----------- */
 .live-badge {
   display: inline-flex;

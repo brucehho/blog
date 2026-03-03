@@ -30,6 +30,25 @@
         <a href="{{ '/tags/中美/' | relative_url }}?lang=en">China-US</a>
         <a href="{{ '/tags/日本/' | relative_url }}?lang=en">Japan</a>
         <a href="{{ '/about/' | relative_url }}">About</a>
+    {% elsif page.layout == 'tag' %}
+        <span class="nav-lang nav-zh">
+          <a href="{{ '/' | relative_url }}">首页</a>
+          <a href="{{ '/tags/中东/' | relative_url }}">中东</a>
+          <a href="{{ '/tags/金融/' | relative_url }}">金融</a>
+          <a href="{{ '/tags/经济/' | relative_url }}">经济</a>
+          <a href="{{ '/tags/中美/' | relative_url }}">中美</a>
+          <a href="{{ '/tags/日本/' | relative_url }}">日本</a>
+          <a href="{{ '/about/' | relative_url }}">关于</a>
+        </span>
+        <span class="nav-lang nav-en">
+          <a href="{{ '/en/' | relative_url }}">Home</a>
+          <a href="{{ '/tags/中东/' | relative_url }}?lang=en">Middle East</a>
+          <a href="{{ '/tags/金融/' | relative_url }}?lang=en">Finance</a>
+          <a href="{{ '/tags/经济/' | relative_url }}?lang=en">Economy</a>
+          <a href="{{ '/tags/中美/' | relative_url }}?lang=en">China-US</a>
+          <a href="{{ '/tags/日本/' | relative_url }}?lang=en">Japan</a>
+          <a href="{{ '/about/' | relative_url }}">About</a>
+        </span>
     {% else %}
       <a href="{{ '/' | relative_url }}">首页</a>
       <a href="{{ '/tags/中东/' | relative_url }}">中东</a>
