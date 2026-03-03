@@ -7,7 +7,7 @@ description: |
   关注地缘政治与思想演化：中美、俄乌、全球冲突、金融与能源博弈、AI 竞争，以及人生哲理。
 
 url: https://brucehho.github.io
-baseurl: "/strategic-observer"   # 若绑定独立域名或用用户主页，可置为 ""
+baseurl: "/blog"
 
 # 主题与插件（使用 GitHub Pages 官方支持）
 theme: minima
