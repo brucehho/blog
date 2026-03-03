@@ -65,11 +65,11 @@ function switchTagLang(lang) {
   document.querySelectorAll('.tag-lang-btn').forEach(function(btn) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
-  history.replaceState(null, '', '#' + lang);
+  localStorage.setItem('siteLang', lang);
 }
 
 (function() {
-  var hash = window.location.hash.replace('#', '');
-  switchTagLang(hash === 'en' ? 'en' : 'zh');
+  var lang = localStorage.getItem('siteLang') || 'zh';
+  switchTagLang(lang);
 })();
 </script>

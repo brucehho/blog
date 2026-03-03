@@ -9,21 +9,26 @@
       </span>
     </a>
     <div class="lang-toggle">
-      <a href="{{ '/' | relative_url }}" class="lang-btn{% if page.layout == 'home' %} active{% endif %}">中文</a>
+      <a href="{{ '/' | relative_url }}" class="lang-btn{% if page.layout == 'home' %} active{% endif %}" onclick="localStorage.setItem('siteLang','zh')">中文</a>
       <span class="lang-sep">·</span>
-      <a href="{{ '/en/' | relative_url }}" class="lang-btn{% if page.layout == 'home-en' %} active{% endif %}">EN</a>
+      <a href="{{ '/en/' | relative_url }}" class="lang-btn{% if page.layout == 'home-en' %} active{% endif %}" onclick="localStorage.setItem('siteLang','en')">EN</a>
     </div>
   </div>
+  {% if page.layout == 'home-en' %}
+  <script>localStorage.setItem('siteLang','en');</script>
+  {% elsif page.layout == 'home' %}
+  <script>localStorage.setItem('siteLang','zh');</script>
+  {% endif %}
 
   <!-- Layer 2: Single combined nav -->
   <nav class="nav-main">
     {% if page.layout == 'home-en' %}
         <a href="{{ '/en/' | relative_url }}">Home</a>
-        <a href="{{ '/tags/中东/' | relative_url }}#en">Middle East</a>
-        <a href="{{ '/tags/金融/' | relative_url }}#en">Finance</a>
-        <a href="{{ '/tags/经济/' | relative_url }}#en">Economy</a>
-        <a href="{{ '/tags/中美/' | relative_url }}#en">China-US</a>
-        <a href="{{ '/tags/日本/' | relative_url }}#en">Japan</a>
+        <a href="{{ '/tags/中东/' | relative_url }}">Middle East</a>
+        <a href="{{ '/tags/金融/' | relative_url }}">Finance</a>
+        <a href="{{ '/tags/经济/' | relative_url }}">Economy</a>
+        <a href="{{ '/tags/中美/' | relative_url }}">China-US</a>
+        <a href="{{ '/tags/日本/' | relative_url }}">Japan</a>
         <a href="{{ '/about/' | relative_url }}">About</a>
     {% else %}
       <a href="{{ '/' | relative_url }}">首页</a>
