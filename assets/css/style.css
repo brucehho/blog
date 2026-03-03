@@ -658,6 +658,38 @@ body::before {
 .lang-separator { color: var(--border-2); }
 
 /* ----------- Category archive page ----------- */
+.tag-lang-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--red);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+.tag-lang-toggle {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+.tag-lang-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-3);
+  padding: 0;
+  line-height: 1;
+}
+.tag-lang-btn.active {
+  color: var(--text);
+  font-weight: 600;
+}
+.tag-lang-btn:hover:not(.active) {
+  color: var(--red);
+}
+
 .category-post-list { list-style: none; padding: 0; margin: 1.5rem 0; }
 .category-post-item {
   display: flex;

@@ -18,13 +18,13 @@
   <!-- Layer 2: Single combined nav -->
   <nav class="nav-main">
     {% if page.layout == 'home-en' %}
-      <a href="{{ '/en/' | relative_url }}">Home</a>
-      <a href="{{ '/tags/中东/' | relative_url }}">Middle East</a>
-      <a href="{{ '/tags/金融/' | relative_url }}">Finance</a>
-      <a href="{{ '/tags/经济/' | relative_url }}">Economy</a>
-      <a href="{{ '/tags/中美/' | relative_url }}">China-US</a>
-      <a href="{{ '/tags/日本/' | relative_url }}">Japan</a>
-      <a href="{{ '/about/' | relative_url }}">About</a>
+        <a href="{{ '/en/' | relative_url }}">Home</a>
+        <a href="{{ '/tags/中东/' | relative_url }}#en">Middle East</a>
+        <a href="{{ '/tags/金融/' | relative_url }}#en">Finance</a>
+        <a href="{{ '/tags/经济/' | relative_url }}#en">Economy</a>
+        <a href="{{ '/tags/中美/' | relative_url }}#en">China-US</a>
+        <a href="{{ '/tags/日本/' | relative_url }}#en">Japan</a>
+        <a href="{{ '/about/' | relative_url }}">About</a>
     {% else %}
       <a href="{{ '/' | relative_url }}">首页</a>
       <a href="{{ '/tags/中东/' | relative_url }}">中东</a>

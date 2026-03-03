@@ -5,8 +5,16 @@ layout: default
 {% include header.html %}
 
 <main class="category">
-  <h1>{{ page.title }}</h1>
-  <ul class="category-post-list">
+  <div class="tag-lang-bar">
+    <h1>{{ page.title }}</h1>
+    <div class="tag-lang-toggle">
+      <button class="tag-lang-btn" data-lang="zh" onclick="switchTagLang('zh')">中文</button>
+      <span class="lang-sep">·</span>
+      <button class="tag-lang-btn" data-lang="en" onclick="switchTagLang('en')">EN</button>
+    </div>
+  </div>
+
+  <ul class="category-post-list" id="tag-posts-zh">
     {% for post in site.posts %}
       {% assign post_lang = post.lang | default: 'zh' %}
       {% if post_lang == 'zh' and post.tags contains page.tag %}
@@ -17,6 +25,37 @@ layout: default
       {% endif %}
     {% endfor %}
   </ul>
+
+  <ul class="category-post-list" id="tag-posts-en">
+    {% assign has_en = false %}
+    {% for post in site.posts %}
+      {% assign post_lang = post.lang | default: 'zh' %}
+      {% if post_lang == 'en' and post.tags contains page.tag %}
+        {% assign has_en = true %}
+        <li class="category-post-item">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 </main>
 
 {% include footer.html %}
+
+<script>
+function switchTagLang(lang) {
+  document.getElementById('tag-posts-zh').style.display = (lang === 'zh') ? 'block' : 'none';
+  document.getElementById('tag-posts-en').style.display = (lang === 'en') ? 'block' : 'none';
+  document.querySelectorAll('.tag-lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  history.replaceState(null, '', '#' + lang);
+}
+
+// Auto-switch based on URL hash
+(function() {
+  var hash = window.location.hash.replace('#', '');
+  switchTagLang(hash === 'en' ? 'en' : 'zh');
+})();
+</script>
