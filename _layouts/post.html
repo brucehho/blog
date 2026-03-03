@@ -6,7 +6,13 @@ layout: default
 
 <article class="post">
   <header class="post-header">
+    {% if page.tags[0] %}
+      <span class="post-eyebrow">{{ page.tags[0] }}</span>
+    {% endif %}
     <h1>{{ page.title }}</h1>
+    {% if page.summary %}
+      <p class="post-lead">{{ page.summary }}</p>
+    {% endif %}
     {% include lang-switcher.html %}
     <p class="meta"><time>{{ page.date | date: '%Y-%m-%d' }}</time></p>
   </header>
@@ -15,4 +21,3 @@ layout: default
 </article>
 
 {% include footer.html %}
-
