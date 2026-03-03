@@ -18,11 +18,6 @@ layout: default
   {% assign latest_updates = visible_posts | slice: 0, 8 %}
   {% assign feature_stories = visible_posts | slice: 5, 4 %}
 
-  <header class="hero">
-    <h1>{{ site.title }}</h1>
-    <p class="tagline">{{ site.description }}</p>
-  </header>
-
   <section class="top-stories">
     <h2 class="section-title">Top Stories</h2>
     {% if top_story %}

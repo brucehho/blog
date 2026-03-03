@@ -61,64 +61,137 @@ body::before {
   z-index: 200;
 }
 
-/* ----------- Navigation ----------- */
+/* ----------- Site Logo Bar (Layer 1) ----------- */
+.site-logo-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  position: relative;
+  min-height: 64px;
+}
+
+.live-badge {
+  position: absolute;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.28rem 0.6rem 0.28rem 0.5rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #fff;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: livePulse 1.4s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+.site-logo {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.site-logo:hover { color: var(--red); text-decoration: none; }
+
+.logo-bar-right {
+  position: absolute;
+  right: 2rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--text-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ----------- Navigation (Layer 2 — black) ----------- */
 .nav {
   position: sticky;
   top: 4px;
   z-index: 100;
   padding: 0;
-  background: var(--navy);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: #1a1a1a;
 }
 
 .nav-main {
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0 2rem;
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
 }
 .nav-links a {
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.82);
   font-family: var(--sans);
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: color 0.2s;
   text-decoration: none;
+  padding-bottom: 0.15rem;
+  border-bottom: 2px solid transparent;
 }
-.nav-links a:hover { color: #fff; text-decoration: none; }
+.nav-links a:hover {
+  color: #fff;
+  border-bottom-color: var(--red);
+  text-decoration: none;
+}
 
+/* ----------- Tag strip (Layer 3 — dark grey) ----------- */
 .nav-tag-scroll {
   display: flex;
-  gap: 0.35rem;
-  padding: 0.45rem 2rem 0.65rem;
+  justify-content: center;
+  gap: 0;
+  background: #2d2d2d;
   overflow-x: auto;
-  border-top: 1px solid rgba(255,255,255,0.08);
 }
 .nav-tag-link {
   display: inline-block;
   white-space: nowrap;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255,255,255,0.75);
   font-family: var(--sans);
-  font-size: 0.72rem;
+  font-size: 0.77rem;
+  font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 2px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.55rem 1.1rem;
   text-decoration: none;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.15s, color 0.15s;
 }
+.nav-tag-link:first-child { border-left: 1px solid rgba(255,255,255,0.07); }
 .nav-tag-link:hover {
   color: #fff;
-  border-color: rgba(255,255,255,0.45);
   background: rgba(255,255,255,0.08);
   text-decoration: none;
 }
@@ -130,21 +203,6 @@ body::before {
   padding: 0 1.5rem 5rem;
 }
 
-/* ----------- Hero ----------- */
-.hero {
-  padding: 3.5rem 0 2.5rem;
-  margin-bottom: 2rem;
-}
-
-.hero h1 {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 800;
-  margin: 0 0 1rem;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
 
 .tagline {
   color: var(--text-2);
@@ -597,12 +655,14 @@ body::before {
 
 /* ----------- Responsive ----------- */
 @media (max-width: 768px) {
+  .site-logo-bar { padding: 0.7rem 1rem; min-height: 54px; }
+  .site-logo { font-size: 1.2rem; }
+  .live-badge { left: 1rem; font-size: 0.65rem; }
+  .logo-bar-right { display: none; }
   .nav-main { padding: 0 1rem; }
-  .nav-tag-scroll { padding: 0.45rem 1rem 0.65rem; }
-  .nav-links { gap: 1.25rem; }
+  .nav-tag-scroll { justify-content: flex-start; padding: 0; }
+  .nav-links { gap: 1.5rem; }
   .home, .post, .page, .category { padding: 0 1rem 3rem; }
-  .hero { padding: 2.5rem 0 2rem; }
-  .hero h1 { font-size: 1.85rem; }
   .post-header h1 { font-size: 1.65rem; }
   .post-content { font-size: 1rem; }
   .top-story-main .post-title { font-size: 1.5rem; }
