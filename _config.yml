@@ -38,6 +38,8 @@ seo:
 
 # 时区设置为日本标准时间（JST = UTC+9）
 timezone: Asia/Tokyo
+# 允许构建"今天"日期的文章（GitHub Actions 服务器用 UTC，不加此项今天文章会被跳过）
+future: true
 
 # 忽略
 exclude:
