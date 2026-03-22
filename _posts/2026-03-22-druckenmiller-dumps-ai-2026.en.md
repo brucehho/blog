@@ -4,7 +4,7 @@ title: "AI Myth Busted? Unbeaten 30-Year Wall Street Legend Dumps AI Stocks"
 date: 2026-03-22
 lang: en
 slug: druckenmiller-dumps-ai-2026
-permalink: /investing/druckenmiller-dumps-ai-2026/
+permalink: /investing/druckenmiller-dumps-ai-2026-en/
 categories: [investing]
 tags: [AI, Investing, Druckenmiller]
 summary: "Wall Street legend Stanley Druckenmiller dumps Nvidia and other AI stocks, pivoting to copper, gold, and Japanese/Korean equities. We break down the 'smart money' logic behind this counter-intuitive move and what individual investors can learn."
