@@ -18,21 +18,21 @@ He didn't just sell almost all his AI stocks (completely dumping Nvidia, Palanti
 
 Druckenmiller's portfolio shift is by no means an impulsive move, but rather based on a deep insight into industry cycles and supply-demand dynamics.
 
-1. Buying Copper Frantically: The "Invisible Necessity" for AI and EVs
+### 1. Buying Copper Frantically: The "Invisible Necessity" for AI and EVs
 
 You might not have expected it, but the AI boom is triggering a massive demand for copper. The amount of copper used in a large AI data center is several times that of an ordinary office building! Coupled with the fact that EVs use 3-4 times more copper than internal combustion engine vehicles, the demand side for copper is simply "skyrocketing."
 
 What about the supply side? Last year, the Grasberg mine in Indonesia, one of the world's largest copper mines, only recovered 40% of its capacity due to mudslides, and almost no new copper mines have come online in the past 8 years. Morgan Stanley predicts global refined copper shortfall will reach 330,000 tons in 2026. Skyrocketing demand + tight supply; the logic for copper prices rising is incredibly clear.
 
-2. Snapping Up Gold: The "Safe-Haven Hard Currency" Under Geopolitics
+### 2. Snapping Up Gold: The "Safe-Haven Hard Currency" Under Geopolitics
 
 Currently, gold is no longer simply a "monetary hedging tool" but the core of geopolitical trades. Global central banks are frantically buying gold, combined with mounting tensions in the Middle East, making the short-term demand for safe havens virtually unstoppable. The big four banks have also reached a rare consensus: gold prices will continue to rise! JPMorgan Chase sees it hitting $6,300/oz, while Goldman Sachs and Wells Fargo have also given target ranges of $5,400-$6,300.
 
-3. Heavy Positions in Japan and Korea: The "Hidden Winners" of the AI Supply Chain
+### 3. Heavy Positions in Japan and Korea: The "Hidden Winners" of the AI Supply Chain
 
 The Nikkei 225 hit an all-time high, and the South Korean KOSPI surged over 50%+ this year, driven by the "sub-sector dividend" of the AI supply chain. The core component of AI chips, "High Bandwidth Memory" (HBM), has its major suppliers in South Korea (Samsung and SK Hynix have soared 3-5 times in a year). Additionally, Japan's semiconductor equipment and precision manufacturing are making a fortune in the wave of AI expansion.
 
-4. Shorting US Treasuries: The "Contrarian Layout" Under Dollar Pressure
+### 4. Shorting US Treasuries: The "Contrarian Layout" Under Dollar Pressure
 
 The US Dollar Index plummeted from 109 to 98, marking its biggest drop since 2017. As the Federal Reserve continues to cut interest rates, the dollar is inherently under pressure, and capital inevitably flows into higher-yielding assets. Shorting US Treasuries is his "insurance mechanism"—if the economy grows moderately, losses on Treasuries are limited; but if the economy overheats and inflation explodes, Treasury prices will plummet, and shorts will make a massive profit.
 
@@ -40,11 +40,11 @@ The US Dollar Index plummeted from 109 to 98, marking its biggest drop since 201
 
 In interviews, Druckenmiller punctured a "cognitive fallacy" within the investment community:
 
-1. The "Useless Skill" Overvalued by 90% of Investors: Pursuing "High IQ" and "Technical Analysis"
+### 1. The "Useless Skill" Overvalued by 90% of Investors: Pursuing "High IQ" and "Technical Analysis"
 
 Many people think investing requires understanding complex models and reading candlestick charts, but Druckenmiller stated bluntly: IQ is not an advantage. He even mocked himself saying, "My mother-in-law thinks I'm an idiot." Today, 60%-70% of US stock trading is done by algorithms and quants. The technical analysis strategies everyone uses have long become "ineffective."
 
-2. The Severely Undervalued "Core Skill": Trusting Others' Judgment + The Courage of Position Management
+### 2. The Severely Undervalued "Core Skill": Trusting Others' Judgment + The Courage of Position Management
 
 * Judging "who is trustworthy": He doesn't understand biotechnology, yet he made huge profits in the healthcare sector by "trusting top experts." He served on the board of a cancer center for 30 years, surrounded by medical heavyweights. Simply by judging "who is reliable," he could accurately position his investments.
 * The courage of position management: George Soros once criticized him for "earning too little"—the key to making money is daring to bet big when you are right and cutting losses promptly when you are wrong. It's like Texas Hold'em: professional players win fewer hands, but when they do, they go "all in" to earn the big money.
