@@ -36,6 +36,9 @@ seo:
   type: Blog
   name: 地缘政治与思想观察
 
+# 允许显示"今天"及未来日期的文章（修复时区导致文章不显示的问题）
+future: true
+
 # 忽略
 exclude:
   - Gemfile
