@@ -6,8 +6,8 @@ lang: en
 slug: druckenmiller-dumps-ai-2026
 permalink: /investing/druckenmiller-dumps-ai-2026-en/
 categories: [investing]
-tags: [AI, Investing, Druckenmiller]
-summary: "Wall Street legend Stanley Druckenmiller dumps Nvidia and other AI stocks, pivoting to copper, gold, and Japanese/Korean equities. We break down the 'smart money' logic behind this counter-intuitive move and what individual investors can learn."
+tags: [AI, Investing]
+summary: 'Wall Street legend Stanley Druckenmiller dumps Nvidia and other AI stocks, pivoting to copper, gold, and Japanese/Korean equities. We break down the smart money logic behind this counter-intuitive move and what individual investors can learn.'
 toc: true
 ---
 Just last month, while retail investors globally were still crazed about AI stocks, top Wall Street "smart money" quietly cleared out their positions. This big player is Stanley Druckenmiller—a legendary figure with an undefeated 30-year investing record and an annualized return of over 30%.
